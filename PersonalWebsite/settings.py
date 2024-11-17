@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-#ef)0cm5$)vrh)tc@g8&l+^20#c&-8!11j+je+%jmk9@9&of5z
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://themestoredep-production.up.railway.app", "http://127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://themestore-production.up.railway.app", "http://127.0.0.1"]
 
 
 # Application definition
@@ -80,6 +80,24 @@ WSGI_APPLICATION = 'PersonalWebsite.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 
+
+
+# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ["PGDATABASE"],
+        'USER': os.environ["PGUSER"],
+        'PASSWORD': os.environ["PGPASSWORD"],
+        'HOST': os.environ["PGHOST"],
+        'PORT': os.environ["PGPORT"],
+    }
+} if not DEBUG else {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
@@ -148,6 +166,7 @@ DEFAULT_FROM_EMAIL = 'your-email@gmail.com'  # Sender email address
 '''
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -163,3 +182,4 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
