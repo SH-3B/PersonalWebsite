@@ -1,0 +1,50 @@
+{% extends 'about_myself/base.html' %}
+{% block title %}Services List{% endblock %}
+{% block content %}
+<br><br><br>
+<section>
+<section class="services-section">
+  <div class="container">
+    <h1 class="title">Your Services</h1>
+
+   
+    <div class="search-form">
+      <form method="GET" class="search-bar">
+        <input type="text" name="q" placeholder="Search for services" value="{{ request.GET.q }}" class="search-input">
+        <button type="submit" class="search-btn">Search</button>
+      </form>
+    </div>
+
+    
+    <div class="services-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Service Title</th>
+            <th>Description</th>
+            <th> </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for service in services %}
+          <tr>
+            <td>{{ service.title }}</td>
+            <td>{{ service.description }}</td>
+            <td class="action-buttons">
+              <a href="{% url 'dashboard:update_service' service.pk %}" class="btn btn-edit">Edit</a>
+              <a href="{% url 'dashboard:delete_service' service.pk %}" class="btn btn-delete">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    
+    <div class="add-service">
+      <a href="{% url 'dashboard:add_service' %}" class="btn btn-add">Add New Service</a>
+    </div>
+  </div>
+</section>
+</section>
+{% endblock %}
