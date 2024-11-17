@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-#ef)0cm5$)vrh)tc@g8&l+^20#c&-8!11j+je+%jmk9@9&of5z
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://themestoredep-production.up.railway.app", "http://127.0.0.1"]
 
 
 # Application definition
@@ -122,6 +123,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # Directory where static files are stored (during development)
 STATICFILES_DIRS = [
